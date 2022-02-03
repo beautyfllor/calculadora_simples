@@ -43,9 +43,14 @@ if (isset($_POST["btncalc"])) {
 					$resultado = $valor1 * $valor2;
 					break;
 				case "dividir":
-					$resultado = $valor1 / $valor2;
+					//Validação para tratamento de erro da divisão por 0
+					if($valor2 == 0)
+						echo('<script> alert("Impossível dividir por 0!"); </script>');
+					else
+						$resultado = $valor1 / $valor2;
 					break;
 			}
+			$resultado = round($resultado, 2);
 		}
 	}
 }
